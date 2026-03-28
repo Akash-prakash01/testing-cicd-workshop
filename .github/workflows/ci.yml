@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [22.x, 24.x] # Align with your local Node and future-proof Node
 
     steps:
       - name: Checkout code
@@ -28,10 +28,10 @@ jobs:
         run: npm ci
 
       - name: Run unit tests
-        run: npm run test:unit -- --verbose
+        run: npm run test:unit
 
       - name: Run integration tests
-        run: npm run test:integration -- --verbose
+        run: npm run test:integration
 
       - name: Generate test coverage
         run: npm run test:coverage
@@ -41,11 +41,4 @@ jobs:
         with:
           file: ./coverage/lcov.info
           flags: unittests
-          name: codecov-umbrella
-
-      - name: Upload unit test results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: unit-test-results
-          path: coverage/
+          name: codecov-umbrella-${{ matrix.node-version }} # Unique per Node version
