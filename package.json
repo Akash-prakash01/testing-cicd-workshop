@@ -3,33 +3,21 @@
   "version": "1.0.0",
   "description": "CI/CD Pipeline Exercise for Testing Team",
   "main": "app.js",
-   "scripts": {
-
-    "start": "node app.js",
-
-    "test": "jest",
-
-    "test:unit": "jest tests/unit.test.js",
-
-    "test:integration": "jest tests/integration.test.js",
-
-    "test:coverage": "jest --coverage"
-
-  },
-    "jest": {
-
+ "scripts": {
+  "start": "node server.js",
+  "test": "jest",
+  "test:unit": "jest tests/unit.test.js",
+  "test:integration": "jest tests/integration.test.js",
+  "test:coverage": "jest --coverage",
+  "lint": "eslint *.js tests/*.js"
+},
+  "jest": {
     "testEnvironment": "node",
-
     "collectCoverageFrom": [
-
       "*.js",
-
       "!node_modules/**"
-
     ]
-
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
